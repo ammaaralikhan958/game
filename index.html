@@ -1,118 +1,95 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Untitled</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="generator" content="CoolUtils HTML exporter" />
-<style type="text/css">
-<!--
-body { color: #000000; background-color: #FFFFFF; }
-.python1-classname { color: #000080; font-weight: bold; }
-.python1-comment { color: #808080; font-style: italic; }
-.python1-commentedcode { color: #C0C0C0; font-style: italic; }
-.python1-documentation { color: #CC00FF; }
-.python1-float { color: #008080; }
-.python1-functionname { color: #008080; font-weight: bold; }
-.python1-hexadecimal { color: #008080; }
-.python1-identifier { color: #000000; }
-.python1-matchingbrace { color: #0000FF; font-weight: bold; }
-.python1-multi-linestring { color: #808000; }
-.python1-nonreservedkeyword { color: #000080; }
-.python1-number { color: #008080; }
-.python1-octal { color: #008080; }
-.python1-reservedword { font-weight: bold; }
-.python1-space { color: #C0C0C0; }
-.python1-string { color: #808000; }
-.python1-symbol { color: #800000; }
-.python1-syntaxerror { color: #FF0000; }
-.python1-systemfunctionsandvariables { font-weight: bold; }
-.python1-unbalancedbrace { color: #FFFF00; }
--->
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+      background: #f4f4f4;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      margin: 30px 0;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 15px 25px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 10px;
+      border: 1px solid #333;
+      background: white;
+    }
+
+    button:hover {
+      background: #e6e6e6;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    #choices {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
 </head>
+
 <body>
-<!--StartFragment--><pre><code><span class="python1-identifier">rock</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-multi-linestring">'''
-    _______
----'   ____)
-      (_____)
-      (_____)
-      (____)
----.__(___)
-'''
+  <h1>Rock Paper Scissors</h1>
+  <p>Choose one:</p>
 
-</span><span class="python1-identifier">paper</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-multi-linestring">'''
-     _______
----'    ____)____
-           ______)
-          _______)
-         _______)
----.__________)
-'''
+  <div class="buttons">
+    <button data-choice="Rock">🪨 Rock</button>
+    <button data-choice="Paper">📄 Paper</button>
+    <button data-choice="Scissors">✂️ Scissors</button>
+  </div>
 
-</span><span class="python1-identifier">scissors</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-multi-linestring">'''
-    _______
----'   ____)____
-          ______)
-       __________)
-      (____)
----.__(___)
-'''
+  <div id="choices"></div>
+  <div id="result"></div>
 
-</span><span class="python1-identifier">game_images</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-symbol">[</span><span class="python1-identifier">rock</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">paper</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">scissors</span><span class="python1-symbol">]
+  <script>
+    const buttons = document.querySelectorAll("button");
+    const choicesDisplay = document.getElementById("choices");
+    const resultDisplay = document.getElementById("result");
 
-</span><span class="python1-reservedword">import</span><span class="python1-space"> </span><span class="python1-identifier">random
-computer</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">random</span><span class="python1-symbol">.</span><span class="python1-identifier">choice</span><span class="python1-symbol">(</span><span class="python1-identifier">game_images</span><span class="python1-symbol">)
+    const options = ["Rock", "Paper", "Scissors"];
 
-</span><span class="python1-identifier">player_choice</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">int</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">input</span><span class="python1-symbol">(</span><span class="python1-string">&quot;What do you choose? Type 0 for rock, 1 for paper or 2 for scissors&quot;</span><span class="python1-symbol">))
-</span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-identifier">player_choice</span><span class="python1-space"> </span><span class="python1-symbol">==</span><span class="python1-space"> </span><span class="python1-number">0</span><span class="python1-symbol">:
-</span><span class="python1-space">    </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-identifier">rock</span><span class="python1-symbol">)
-</span><span class="python1-space">    </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-identifier">computer</span><span class="python1-space"> </span><span class="python1-symbol">==</span><span class="python1-space"> </span><span class="python1-identifier">game_images</span><span class="python1-symbol">[</span><span class="python1-number">0</span><span class="python1-symbol">]:
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-identifier">rock</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;Computer chose rock&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;It's a draw&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">    </span><span class="python1-reservedword">elif</span><span class="python1-space"> </span><span class="python1-identifier">computer</span><span class="python1-space"> </span><span class="python1-symbol">==</span><span class="python1-space"> </span><span class="python1-identifier">game_images</span><span class="python1-symbol">[</span><span class="python1-number">1</span><span class="python1-symbol">]:
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-identifier">paper</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;Computer chose paper&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;You lose :(&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">    </span><span class="python1-reservedword">else</span><span class="python1-symbol">:
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-identifier">scissors</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;Computer chose scissors&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;You won!&quot;</span><span class="python1-symbol">)
-</span><span class="python1-reservedword">elif</span><span class="python1-space"> </span><span class="python1-identifier">player_choice</span><span class="python1-space"> </span><span class="python1-symbol">==</span><span class="python1-space"> </span><span class="python1-number">1</span><span class="python1-symbol">:
-</span><span class="python1-space">    </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-identifier">paper</span><span class="python1-symbol">)
-</span><span class="python1-space">    </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-identifier">computer</span><span class="python1-space"> </span><span class="python1-symbol">==</span><span class="python1-space"> </span><span class="python1-identifier">game_images</span><span class="python1-symbol">[</span><span class="python1-number">0</span><span class="python1-symbol">]:
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-identifier">rock</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;Computer chose rock&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;You won!&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">    </span><span class="python1-reservedword">elif</span><span class="python1-space"> </span><span class="python1-identifier">computer</span><span class="python1-space"> </span><span class="python1-symbol">==</span><span class="python1-space"> </span><span class="python1-identifier">game_images</span><span class="python1-symbol">[</span><span class="python1-number">1</span><span class="python1-symbol">]:
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-identifier">paper</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;Computer chose paper&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;It's a draw&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">    </span><span class="python1-reservedword">else</span><span class="python1-symbol">:
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-identifier">scissors</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;Computer chose scissors&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;You lose :(&quot;</span><span class="python1-symbol">)
-</span><span class="python1-reservedword">elif</span><span class="python1-space"> </span><span class="python1-identifier">player_choice</span><span class="python1-space"> </span><span class="python1-symbol">==</span><span class="python1-space"> </span><span class="python1-number">2</span><span class="python1-symbol">:
-</span><span class="python1-space">    </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-identifier">scissors</span><span class="python1-symbol">)
-</span><span class="python1-space">    </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-identifier">computer</span><span class="python1-space"> </span><span class="python1-symbol">==</span><span class="python1-space"> </span><span class="python1-identifier">game_images</span><span class="python1-symbol">[</span><span class="python1-number">0</span><span class="python1-symbol">]:
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-identifier">rock</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;Computer chose rock&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;You lose :(&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">    </span><span class="python1-reservedword">elif</span><span class="python1-space"> </span><span class="python1-identifier">computer</span><span class="python1-space"> </span><span class="python1-symbol">==</span><span class="python1-space"> </span><span class="python1-identifier">game_images</span><span class="python1-symbol">[</span><span class="python1-number">1</span><span class="python1-symbol">]:
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-identifier">paper</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;Computer chose paper&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;You won!&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">    </span><span class="python1-reservedword">else</span><span class="python1-symbol">:
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-identifier">scissors</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;Computer chose scissors&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;It's a draw&quot;</span><span class="python1-symbol">)
-</span><span class="python1-reservedword">else</span><span class="python1-symbol">:
-</span><span class="python1-space">    </span><span class="python1-reservedword">print</span><span class="python1-symbol">(</span><span class="python1-string">&quot;Invalid entry - please enter either 0, 1 or 2.&quot;</span><span class="python1-symbol">)
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const playerChoice = button.dataset.choice;
+        const computerChoice =
+          options[Math.floor(Math.random() * options.length)];
 
-</span><span class="python1-space">    
+        choicesDisplay.textContent =
+          `You chose ${playerChoice}. Computer chose ${computerChoice}.`;
 
-
-
-</span></code></pre><!--EndFragment--></body>
+        if (playerChoice === computerChoice) {
+          resultDisplay.textContent = "It's a draw!";
+        } else if (
+          (playerChoice === "Rock" && computerChoice === "Scissors") ||
+          (playerChoice === "Paper" && computerChoice === "Rock") ||
+          (playerChoice === "Scissors" && computerChoice === "Paper")
+        ) {
+          resultDisplay.textContent = "You won!";
+        } else {
+          resultDisplay.textContent = "You lost!";
+        }
+      });
+    });
+  </script>
+</body>
 </html>
